@@ -1,2 +1,5 @@
 __pycache__/
-*.pycbuild_hd/ 
+*.pyc
+*.py
+*.mp4
+build_hd/

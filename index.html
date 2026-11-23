@@ -6,7 +6,7 @@
     <title>KALIWA — Programmatic 2D Animated Short | Albert Lawrence B. Robiñol</title>
     <link rel="preconnect" href="[https://fonts.googleapis.com](https://fonts.googleapis.com)">
     <link rel="preconnect" href="[https://fonts.gstatic.com](https://fonts.gstatic.com)" crossorigin>
-    <link href="[https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=JetBrains+Mono:wght@400;500&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap](https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=JetBrains+Mono:wght@400;500&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap)" rel="stylesheet">
+    <link href="[https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&display=swap](https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&display=swap)" rel="stylesheet">
     <style>
         :root {
             --bg-primary: #07090e;
@@ -19,19 +19,20 @@
             --text-muted: #64748b;
             --accent-cyan: #38bdf8;
             --accent-indigo: #818cf8;
+            --font-main: 'Cinzel', Georgia, serif;
         }
 
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
+            font-family: var(--font-main);
         }
 
         html {
             scroll-behavior: smooth;
             background-color: var(--bg-primary);
             color: var(--text-primary);
-            font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
             -webkit-font-smoothing: antialiased;
         }
 
@@ -67,9 +68,9 @@
         }
 
         .intro-kicker {
-            font-family: 'JetBrains Mono', monospace;
             font-size: 0.75rem;
-            letter-spacing: 0.24em;
+            font-weight: 600;
+            letter-spacing: 0.22em;
             text-transform: uppercase;
             color: var(--accent-cyan);
             opacity: 0;
@@ -78,7 +79,6 @@
         }
 
         .intro-title {
-            font-family: 'Cinzel', serif;
             font-size: clamp(2.8rem, 8vw, 5.5rem);
             font-weight: 700;
             letter-spacing: 0.22em;
@@ -92,12 +92,12 @@
         }
 
         .intro-sub {
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            font-size: 1.02rem;
+            font-size: 0.96rem;
             font-weight: 400;
+            letter-spacing: 0.04em;
             color: var(--text-secondary);
-            max-width: 520px;
-            line-height: 1.65;
+            max-width: 560px;
+            line-height: 1.7;
             opacity: 0;
             animation: fadeUp 0.8s ease forwards 0.95s;
         }
@@ -112,12 +112,11 @@
             background: linear-gradient(135deg, rgba(56, 189, 248, 0.2), rgba(129, 140, 248, 0.2));
             border: 1px solid var(--border-accent);
             color: var(--text-primary);
-            padding: 0.85rem 2.1rem;
+            padding: 0.85rem 2.2rem;
             border-radius: 999px;
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            font-weight: 600;
-            font-size: 0.88rem;
-            letter-spacing: 0.08em;
+            font-weight: 700;
+            font-size: 0.85rem;
+            letter-spacing: 0.14em;
             text-transform: uppercase;
             cursor: pointer;
             transition: all 0.25s ease;
@@ -176,7 +175,6 @@
         }
 
         .brand-name {
-            font-family: 'Cinzel', serif;
             font-weight: 700;
             letter-spacing: 0.16em;
             font-size: 1.08rem;
@@ -191,8 +189,10 @@
         .nav-links a {
             color: var(--text-secondary);
             text-decoration: none;
-            font-size: 0.88rem;
-            font-weight: 500;
+            font-size: 0.82rem;
+            font-weight: 600;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
             transition: color 0.2s;
         }
 
@@ -201,8 +201,9 @@
         }
 
         .nav-badge {
-            font-family: 'JetBrains Mono', monospace;
             font-size: 0.74rem;
+            font-weight: 700;
+            letter-spacing: 0.08em;
             padding: 0.3rem 0.75rem;
             border-radius: 6px;
             background: rgba(56, 189, 248, 0.1);
@@ -225,9 +226,9 @@
 
         .course-pill {
             display: inline-block;
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.74rem;
-            letter-spacing: 0.08em;
+            font-size: 0.72rem;
+            font-weight: 600;
+            letter-spacing: 0.12em;
             text-transform: uppercase;
             color: var(--accent-cyan);
             background: rgba(56, 189, 248, 0.08);
@@ -238,21 +239,20 @@
         }
 
         .hero-header h1 {
-            font-family: 'Cinzel', serif;
             font-size: clamp(2.1rem, 4.5vw, 3.2rem);
-            letter-spacing: 0.14em;
+            letter-spacing: 0.16em;
             font-weight: 700;
             margin-bottom: 0.6rem;
         }
 
         .hero-header p {
-            font-family: 'Plus Jakarta Sans', sans-serif;
             color: var(--text-secondary);
-            max-width: 680px;
+            max-width: 720px;
             margin: 0 auto;
-            font-size: 1.02rem;
+            font-size: 0.96rem;
             font-weight: 400;
-            line-height: 1.65;
+            letter-spacing: 0.03em;
+            line-height: 1.7;
         }
 
         /* Cinema Theater Slot (keeps layout height stable when floating) */
@@ -270,10 +270,10 @@
         }
 
         .slot-placeholder-text {
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.8rem;
+            font-size: 0.78rem;
+            font-weight: 600;
             color: var(--text-muted);
-            letter-spacing: 0.08em;
+            letter-spacing: 0.12em;
             text-transform: uppercase;
             opacity: 0;
             transition: opacity 0.25s ease;
@@ -340,10 +340,10 @@
             border-radius: 8px;
         }
 
-        video {
+        .video-inner iframe {
             width: 100%;
             height: 100%;
-            object-fit: contain;
+            border: 0;
             display: block;
         }
 
@@ -366,14 +366,14 @@
             display: flex;
             flex-wrap: wrap;
             gap: 1.25rem;
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.78rem;
+            font-size: 0.76rem;
+            letter-spacing: 0.06em;
             color: var(--text-secondary);
         }
 
         .meta-specs span strong {
             color: var(--text-primary);
-            font-weight: 500;
+            font-weight: 700;
         }
 
         .screening-actions {
@@ -385,11 +385,12 @@
             background: transparent;
             border: 1px solid var(--border-subtle);
             color: var(--text-primary);
-            padding: 0.48rem 1rem;
+            padding: 0.5rem 1rem;
             border-radius: 8px;
-            font-size: 0.82rem;
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            font-weight: 600;
+            font-size: 0.76rem;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
             cursor: pointer;
             text-decoration: none;
             transition: all 0.2s;
@@ -409,14 +410,15 @@
         }
 
         .section-head h2 {
-            font-size: 1.45rem;
+            font-size: 1.35rem;
             font-weight: 700;
-            letter-spacing: -0.01em;
+            letter-spacing: 0.06em;
         }
 
         .section-head p {
             color: var(--text-secondary);
-            font-size: 0.94rem;
+            font-size: 0.9rem;
+            letter-spacing: 0.02em;
             margin-top: 0.25rem;
         }
 
@@ -442,22 +444,24 @@
         }
 
         .info-card .label {
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.72rem;
+            font-size: 0.7rem;
+            font-weight: 700;
             text-transform: uppercase;
-            letter-spacing: 0.12em;
+            letter-spacing: 0.14em;
             color: var(--accent-cyan);
             margin-bottom: 0.5rem;
         }
 
         .info-card h3 {
-            font-size: 1.08rem;
+            font-size: 1.04rem;
+            letter-spacing: 0.04em;
             margin-bottom: 0.45rem;
             font-weight: 700;
         }
 
         .info-card p {
-            font-size: 0.9rem;
+            font-size: 0.86rem;
+            letter-spacing: 0.02em;
             color: var(--text-secondary);
         }
 
@@ -493,8 +497,9 @@
         }
 
         .principle-num {
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.75rem;
+            font-size: 0.74rem;
+            font-weight: 700;
+            letter-spacing: 0.08em;
             color: var(--accent-cyan);
             background: rgba(56, 189, 248, 0.1);
             padding: 0.2rem 0.55rem;
@@ -502,22 +507,25 @@
         }
 
         .principle-tag {
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.72rem;
+            font-size: 0.7rem;
+            font-weight: 600;
+            letter-spacing: 0.06em;
             color: var(--text-muted);
         }
 
         .principle-card h3 {
-            font-size: 1.05rem;
+            font-size: 1.02rem;
             font-weight: 700;
+            letter-spacing: 0.04em;
             margin-bottom: 0.4rem;
             color: var(--text-primary);
         }
 
         .principle-card p {
-            font-size: 0.88rem;
+            font-size: 0.85rem;
+            letter-spacing: 0.02em;
             color: var(--text-secondary);
-            line-height: 1.6;
+            line-height: 1.65;
         }
 
         /* Footer */
@@ -526,12 +534,12 @@
             padding: 2rem 1.5rem;
             text-align: center;
             color: var(--text-muted);
-            font-size: 0.85rem;
+            font-size: 0.8rem;
+            letter-spacing: 0.06em;
         }
 
         footer strong {
-            font-family: 'Cinzel', serif;
-            letter-spacing: 0.1em;
+            letter-spacing: 0.12em;
             color: var(--text-secondary);
             font-weight: 700;
         }
@@ -592,11 +600,15 @@
             <div class="theater-slot" id="theater-slot">
                 <span class="slot-placeholder-text">Playing in Mini-Player Mode &bull; Scroll up to dock</span>
                 <div class="video-box" id="video-box">
-                    <div class="video-inner">
-                        <video id="film-player" controls controlsList="nodownload" disablePictureInPicture oncontextmenu="return false;" preload="metadata" playsinline>
-                            <source src="Kaliwa_1080p.mp4" type="video/mp4">
-                            Your browser does not support HTML5 video playback.
-                        </video>
+                    <div class="video-inner" oncontextmenu="return false;">
+                        <iframe
+                            id="film-player"
+                            src="[https://drive.google.com/file/d/10W5VgzMY5EHTlf-im6mVVje_aIWLFX4W/preview](https://drive.google.com/file/d/10W5VgzMY5EHTlf-im6mVVje_aIWLFX4W/preview)"
+                            allow="autoplay; fullscreen"
+                            allowfullscreen
+                            loading="lazy"
+                            title="KALIWA 1080p Animated Short">
+                        </iframe>
                     </div>
                 </div>
             </div>
@@ -609,7 +621,7 @@
                 </div>
                 <div class="screening-actions">
                     <button class="btn-outline" onclick="replayIntro()">Replay Intro</button>
-                    <a class="btn-outline" href="https://github.com/CharmanderTheGreat/KALIWA-ANIMATION" target="_blank" rel="noopener">View Source Code</a>
+                    <a class="btn-outline" href="[https://github.com/CharmanderTheGreat/KALIWA-ANIMATION](https://github.com/CharmanderTheGreat/KALIWA-ANIMATION)" target="_blank" rel="noopener">View Repository</a>
                 </div>
             </div>
         </section>
@@ -789,17 +801,14 @@
 
     <script>
         const overlay = document.getElementById('intro-overlay');
-        const video = document.getElementById('film-player');
         const theaterSlot = document.getElementById('theater-slot');
         const videoBox = document.getElementById('video-box');
 
         function enterScreening() {
             overlay.classList.add('hidden');
-            video.play().catch(() => {});
         }
 
         function replayIntro() {
-            video.pause();
             overlay.classList.remove('hidden');
         }
 
