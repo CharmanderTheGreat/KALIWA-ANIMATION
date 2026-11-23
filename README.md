@@ -19,7 +19,7 @@ A programmatic 2D animated short film built entirely in Python, rendered in Full
 
 **Kaliwa** is an original code-driven 2D animation where every scene transition, character rig, facial expression, camera movement, volumetric lighting effect, and synchronized audio cue is generated procedurally through Python scripts rather than traditional keyframe GUI tools.
 
-The showcase site (`index.html`) delivers a theatrical screening interface featuring an animated title card intro, floating picture-in-picture playback on scroll, protected media streaming, and a structured breakdown of how the 12 Principles of Animation are applied in the film.
+The showcase site (`index.html`) delivers a theatrical screening interface featuring an animated title card intro, floating picture-in-picture playback on scroll, Full HD 1080p streaming, and a structured breakdown of how the 12 Principles of Animation are applied in the film.
 
 ---
 
@@ -59,11 +59,11 @@ KALIWA-ANIMATION/
 
 * **Animation Production:** Python 3.x (Procedural 2D Graphics, Audio Synthesis, FFmpeg Media Muxing)
 * **Frontend Screening Room:** HTML5, CSS3, Vanilla JavaScript
-* **Media Streaming & Hosting:** Google Drive Embedded Player, GitHub Pages
+* **Media Streaming & Hosting:** YouTube Embedded Player (1080p HD), GitHub Pages
 
 ---
 
 ## Author
 
-**Albert Lawrence B. Robiñol** 
+**Albert Lawrence B. Robiñol** (BSIT 3-2)
 * GitHub: `@CharmanderTheGreat` (`[https://github.com/CharmanderTheGreat](https://github.com/CharmanderTheGreat)`)

@@ -149,7 +149,7 @@
         }
 
         .nav-container {
-            max-width: 1200px;
+            max-width: 1280px;
             margin: 0 auto;
             padding: 1rem 1.5rem;
             display: flex;
@@ -218,7 +218,7 @@
             padding: 2.5rem 1.5rem 6rem;
         }
 
-                /* Hero Screening Section */
+        /* Hero Screening Section */
         .hero-header {
             text-align: center;
             margin-bottom: 2rem;
@@ -604,7 +604,7 @@
                     <div class="video-inner" oncontextmenu="return false;">
                         <iframe
                             id="film-player"
-                            allow="autoplay; fullscreen"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen"
                             allowfullscreen
                             title="KALIWA 1080p Animated Short">
                         </iframe>
@@ -614,7 +614,7 @@
 
             <div class="screening-bar">
                 <div class="meta-specs">
-                    <span><strong>RESOLUTION:</strong> 1920x1080 (Full HD &bull; Gear Icon &rarr; 1080p)</span>
+                    <span><strong>RESOLUTION:</strong> 1920x1080 (Full HD)</span>
                     <span><strong>CODEC:</strong> H.264 / MP4</span>
                     <span><strong>ENGINE:</strong> Custom Python 2D Pipeline</span>
                 </div>
@@ -803,9 +803,9 @@
             const proto = window.location.protocol === 'http:' ? 'http:' : 'https:';
             const slashes = String.fromCharCode(47, 47);
 
-            const driveHost = ['drive', 'google', 'com'].join('.');
-            const fileId = '10W5VgzMY5EHTlf-im6mVVje_aIWLFX4W';
-            const videoUrl = proto + slashes + driveHost + '/file/d/' + fileId + '/preview';
+            const ytHost = ['www', 'youtube', 'com'].join('.');
+            const ytVideoId = 'J6DJsprJuXE';
+            const videoUrl = proto + slashes + ytHost + '/embed/' + ytVideoId + '?rel=0&modestbranding=1&vq=hd1080';
 
             const ghHost = ['github', 'com'].join('.');
             const repoUrl = proto + slashes + ghHost + '/CharmanderTheGreat/KALIWA-ANIMATION';
