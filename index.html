@@ -213,12 +213,12 @@
 
         /* Main Layout */
         main {
-            max-width: 1200px;
+            max-width: 1280px;
             margin: 0 auto;
             padding: 2.5rem 1.5rem 6rem;
         }
 
-        /* Hero Screening Section */
+                /* Hero Screening Section */
         .hero-header {
             text-align: center;
             margin-bottom: 2rem;
@@ -394,6 +394,7 @@
             cursor: pointer;
             text-decoration: none;
             transition: all 0.2s;
+            display: inline-block;
         }
 
         .btn-outline:hover {
@@ -565,7 +566,7 @@
             Bringing Ideas to Life: A Procedural 2D Animated Short Demonstrating the 12 Principles of Animation
         </p>
         <div class="intro-actions">
-            <button class="btn-enter" onclick="enterScreening()">Watch Film</button>
+            <button type="button" class="btn-enter" id="btn-watch">Watch Film</button>
         </div>
     </div>
 
@@ -613,13 +614,13 @@
 
             <div class="screening-bar">
                 <div class="meta-specs">
-                    <span><strong>RESOLUTION:</strong> 1920x1080 (Full HD)</span>
+                    <span><strong>RESOLUTION:</strong> 1920x1080 (Full HD &bull; Gear Icon &rarr; 1080p)</span>
                     <span><strong>CODEC:</strong> H.264 / MP4</span>
                     <span><strong>ENGINE:</strong> Custom Python 2D Pipeline</span>
                 </div>
                 <div class="screening-actions">
-                    <button class="btn-outline" onclick="replayIntro()">Replay Intro</button>
-                    <button class="btn-outline" onclick="openRepo()">View Repository</button>
+                    <button type="button" class="btn-outline" id="btn-replay">Replay Intro</button>
+                    <a class="btn-outline" id="btn-repo" target="_blank" rel="noopener noreferrer">View Repository</a>
                 </div>
             </div>
         </section>
@@ -676,7 +677,7 @@
                             <span class="principle-tag">story.py</span>
                         </div>
                         <h3>Anticipation</h3>
-                        <p>Preparatory crouch poses, subtle posture shifts, and pre-action wind-ups signaling major character turns and leaps to the viewer.</p>
+                        <p>Preparatory crouch poses, posture shifts, and pre-action wind-ups signaling major character turns and leaps to the viewer.</p>
                     </div>
                 </div>
 
@@ -798,44 +799,62 @@
     </footer>
 
     <script>
-        const DRIVE_FILE_ID = "10W5VgzMY5EHTlf-im6mVVje_aIWLFX4W";
-        const VIDEO_EMBED_URL = "https://" + "[drive.google.com/file/d/](https://drive.google.com/file/d/)" + DRIVE_FILE_ID + "/preview";
-        const REPO_URL = "https://" + "[github.com/CharmanderTheGreat/KALIWA-ANIMATION](https://github.com/CharmanderTheGreat/KALIWA-ANIMATION)";
+        document.addEventListener('DOMContentLoaded', function () {
+            const proto = window.location.protocol === 'http:' ? 'http:' : 'https:';
+            const slashes = String.fromCharCode(47, 47);
 
-        const filmPlayer = document.getElementById('film-player');
-        filmPlayer.src = VIDEO_EMBED_URL;
+            const driveHost = ['drive', 'google', 'com'].join('.');
+            const fileId = '10W5VgzMY5EHTlf-im6mVVje_aIWLFX4W';
+            const videoUrl = proto + slashes + driveHost + '/file/d/' + fileId + '/preview';
 
-        const overlay = document.getElementById('intro-overlay');
-        const theaterSlot = document.getElementById('theater-slot');
-        const videoBox = document.getElementById('video-box');
+            const ghHost = ['github', 'com'].join('.');
+            const repoUrl = proto + slashes + ghHost + '/CharmanderTheGreat/KALIWA-ANIMATION';
 
-        function enterScreening() {
-            overlay.classList.add('hidden');
-        }
-
-        function replayIntro() {
-            overlay.classList.remove('hidden');
-        }
-
-        function openRepo() {
-            window.open(REPO_URL, '_blank', 'noopener,noreferrer');
-        }
-
-        function handleFloatingVideo() {
-            const slotRect = theaterSlot.getBoundingClientRect();
-            const isAtTop = window.scrollY <= 80;
-
-            if (!isAtTop && slotRect.bottom < 160) {
-                videoBox.classList.add('floating');
-                theaterSlot.classList.add('is-docked-out');
-            } else {
-                videoBox.classList.remove('floating');
-                theaterSlot.classList.remove('is-docked-out');
+            const filmPlayer = document.getElementById('film-player');
+            if (filmPlayer) {
+                filmPlayer.src = videoUrl;
             }
-        }
 
-        window.addEventListener('scroll', handleFloatingVideo, { passive: true });
-        window.addEventListener('resize', handleFloatingVideo);
+            const btnRepo = document.getElementById('btn-repo');
+            if (btnRepo) {
+                btnRepo.href = repoUrl;
+            }
+
+            const overlay = document.getElementById('intro-overlay');
+            const btnWatch = document.getElementById('btn-watch');
+            const btnReplay = document.getElementById('btn-replay');
+            const theaterSlot = document.getElementById('theater-slot');
+            const videoBox = document.getElementById('video-box');
+
+            if (btnWatch) {
+                btnWatch.addEventListener('click', function () {
+                    overlay.classList.add('hidden');
+                });
+            }
+
+            if (btnReplay) {
+                btnReplay.addEventListener('click', function () {
+                    overlay.classList.remove('hidden');
+                });
+            }
+
+            function handleFloatingVideo() {
+                if (!theaterSlot || !videoBox) return;
+                const slotRect = theaterSlot.getBoundingClientRect();
+                const isAtTop = window.scrollY <= 80;
+
+                if (!isAtTop && slotRect.bottom < 160) {
+                    videoBox.classList.add('floating');
+                    theaterSlot.classList.add('is-docked-out');
+                } else {
+                    videoBox.classList.remove('floating');
+                    theaterSlot.classList.remove('is-docked-out');
+                }
+            }
+
+            window.addEventListener('scroll', handleFloatingVideo, { passive: true });
+            window.addEventListener('resize', handleFloatingVideo);
+        });
     </script>
 </body>
 </html>
