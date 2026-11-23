@@ -6,11 +6,10 @@ A programmatic 2D animated short film built entirely in Python, rendered in Full
 
 ---
 
-## Academic Context
+## Project Specifications
 
 * **Assessment Task:** Individual Laboratory Activity — *Bringing Ideas to Life: Applying the 12 Principles of Animation*
 * **Author:** Albert Lawrence B. Robiñol
-* **Program & Section:** BSIT 3-2
 * **Format & Resolution:** MP4 (H.264), 1920x1080 (16:9 Landscape), 2–3 Minutes Runtime
 
 ---
@@ -65,5 +64,5 @@ KALIWA-ANIMATION/
 
 ## Author
 
-**Albert Lawrence B. Robiñol** (BSIT 3-2)
+**Albert Lawrence B. Robiñol**
 * GitHub: `@CharmanderTheGreat` (`[https://github.com/CharmanderTheGreat](https://github.com/CharmanderTheGreat)`)
