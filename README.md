@@ -1,26 +1,44 @@
 # Kaliwa Animation (`KALIWA-ANIMATION`)
 
-A programmatic 2D animation and audiovisual storytelling project built entirely in Python, rendered in Full HD (1080p), and deployed as an interactive web showcase via GitHub Pages.
+A programmatic 2D animated short film built entirely in Python, rendered in Full HD (1080p), and presented through an interactive web screening room on GitHub Pages.
 
-**Live Showcase:** [Watch Kaliwa Animation](https://charmanderthegreat.github.io/KALIWA-ANIMATION/)
+**Live Screening Room:** [Watch Kaliwa Animation](https://charmanderthegreat.github.io/KALIWA-ANIMATION/)
+
+---
+
+## Academic Context
+
+* **Assessment Task:** Individual Laboratory Activity — *Bringing Ideas to Life: Applying the 12 Principles of Animation*
+* **Author:** Albert Lawrence B. Robiñol
+* **Program & Section:** BSIT 3-2
+* **Format & Resolution:** MP4 (H.264), 1920x1080 (16:9 Landscape), 2–3 Minutes Runtime
 
 ---
 
 ## Overview
 
-**Kaliwa** is a code-driven animated short where every visual scene, character expression, camera movement, lighting effect, and synchronized audio cue is generated procedurally through Python scripts rather than traditional keyframe animation software.
+**Kaliwa** is an original code-driven 2D animation where every scene transition, character rig, facial expression, camera movement, volumetric lighting effect, and synchronized audio cue is generated procedurally through Python scripts rather than traditional keyframe GUI tools.
 
-The project combines frame-by-frame 2D graphics rendering with programmatic audio synthesis and mixing, compiling everything into a high-definition video (`Kaliwa_1080p.mp4`) playable directly in the browser.
+The showcase site (`index.html`) provides a theatrical screening interface with an animated title card intro, full HD playback, and an interactive breakdown mapping the 12 Principles of Animation to the project's underlying codebase.
 
 ---
 
-## Key Features
+## Application of the 12 Principles of Animation
 
-* **Procedural Scene & Character Animation:** Frame-accurate character rigging, facial expressions, mouth states, physics-based motion curves, and dynamic camera tracking scripted in `story.py`.
-* **Custom 2D Rendering Engine:** Built-in graphics pipeline (`engine.py`) supporting anti-aliased vector shapes, gradients, lighting cones, atmospheric weather/particle effects, and smooth scene transitions.
-* **Synchronized Audio & SFX Pipeline:** Programmatic sound effects, background score integration, and timed audio cues managed via `audio.py`.
-* **Automated HD Build System:** Modular build pipeline (`build.py` & `media.py`) that renders visual frames, compiles audio tracks, and muxes them into a final 1080p MP4 output.
-* **Web Showcase Ready:** Includes a responsive, dark-themed HTML5 video player (`index.html`) configured for seamless playback on GitHub Pages.
+| # | Principle | Module | Implementation in *Kaliwa* |
+| :--- | :--- | :--- | :--- |
+| 01 | **Squash and Stretch** | `story.py` | Dynamic scale and vertical compression applied during impact landings, footsteps, and reactive character movements while preserving volume. |
+| 02 | **Anticipation** | `story.py` | Preparatory crouch poses, posture shifts, and pre-action wind-ups signaling major character turns and leaps to the viewer. |
+| 03 | **Staging** | `engine.py` | Camera framing, headlight cones, rain contrast, and focal lighting direct attention cleanly to the narrative subject. |
+| 04 | **Straight Ahead & Pose to Pose** | `story.py`, `engine.py` | Key narrative poses are scripted along timeline intervals while atmospheric rain, light flicker, and particles evolve straight-ahead per frame. |
+| 05 | **Follow Through & Overlapping Action** | `story.py` | Secondary elements and limb motions settle at staggered intervals after primary body momentum stops. |
+| 06 | **Slow In and Slow Out** | `engine.py` | Smoothstep and cubic easing interpolation curves govern camera pans, character acceleration, and scene fades. |
+| 07 | **Arcs** | `story.py` | Trigonometric trajectories guide natural limb swings, head tilts, and airborne motion paths rather than rigid linear shifts. |
+| 08 | **Secondary Action** | `story.py` | Subtle blinking, breathing cycles, brow movements, and environmental reflections reinforce emotion without distracting from dialogue. |
+| 09 | **Timing** | `build.py`, `audio.py` | Exact timestamp pacing controls dramatic pauses, dialogue delivery, and beat-matched sound cues across the film. |
+| 10 | **Exaggeration** | `story.py` | Amplified facial expressions, widened eyes, and heightened silhouette reactions clarify emotional beats immediately. |
+| 11 | **Solid Drawing** | `engine.py` | Consistent character proportions, layered depth parallax, perspective road geometry, and grounded contact shadows maintain spatial depth. |
+| 12 | **Appeal** | `story.py`, `engine.py` | Cohesive nocturnal color palette, expressive character design, and clear visual storytelling create an engaging atmosphere. |
 
 ---
 
@@ -28,50 +46,44 @@ The project combines frame-by-frame 2D graphics rendering with programmatic audi
 
 ```text
 KALIWA-ANIMATION/
-├── index.html           # Web player interface hosted on GitHub Pages
-├── Kaliwa_1080p.mp4     # Final rendered 1080p Full HD animation with audio
-├── build.py             # Main build script orchestrating the full render pipeline
-├── cli.py               # Command-line interface for running renders and previews
-├── story.py             # Scene choreography, character logic, dialogue, and timeline cues
-├── engine.py            # Core 2D graphics rendering engine and drawing primitives
-├── audio.py             # Audio generation, sound effects (SFX), and track synchronization
-├── media.py             # Video encoding, frame compilation, and FFmpeg media muxing
-├── requirements.txt     # Python dependencies required to build the project
-└── README.md            # Project documentation
+├── index.html           # Interactive screening room & 12 Principles showcase (GitHub Pages)
+├── Kaliwa_1080p.mp4     # Final rendered 1920x1080 Full HD H.264 animated video
+├── build.py             # Main build orchestrator compiling frames and audio into final video
+├── cli.py               # Command-line interface for rendering scenes and previews
+├── story.py             # Scene choreography, character state machines, dialogue, and timeline cues
+├── engine.py            # Custom 2D graphics rendering engine, lighting, and drawing primitives
+├── audio.py             # Procedural SFX synthesis, score mixing, and timestamp synchronization
+├── media.py             # Frame encoding and FFmpeg audio-video muxing pipeline
+├── requirements.txt     # Python package dependencies
+└── README.md            # Project and assessment documentation
 ```
 
 ---
 
 ## Tech Stack
 
-* **Core Language:** Python 3.x
-* **Graphics & Rendering:** Skia-Python / Pillow / NumPy (`engine.py`)
-* **Audio & Media Processing:** FFmpeg / Wave / SciPy (`audio.py`, `media.py`)
-* **Web Hosting:** HTML5, CSS3, GitHub Pages
+* **Programming Language:** Python 3.x
+* **2D Graphics & Math:** Skia-Python, Pillow, NumPy (`engine.py`)
+* **Audio & Video Muxing:** FFmpeg, Wave, SciPy (`audio.py`, `media.py`)
+* **Frontend Showcase:** HTML5, CSS3, Vanilla JavaScript (`index.html`)
+* **Hosting:** GitHub Pages
 
 ---
 
-## Getting Started (Local Build)
-
-To inspect the code or render the animation locally on your machine:
+## Local Build Instructions
 
 ### 1. Prerequisites
-* **Python 3.10+** installed on your system
-* **FFmpeg** installed and added to your system PATH (required for video and audio muxing)
+* **Python 3.10+**
+* **FFmpeg** installed and available in your system PATH
 
-### 2. Clone the Repository
+### 2. Clone and Install
 ```bash
 git clone https://github.com/CharmanderTheGreat/KALIWA-ANIMATION.git
 cd KALIWA-ANIMATION
-```
-
-### 3. Install Dependencies
-```bash
 pip install -r requirements.txt
 ```
 
-### 4. Run the Build Pipeline
-Trigger a local render using either the CLI or the main build script:
+### 3. Render the Animation
 ```bash
 python cli.py
 # or
@@ -80,18 +92,7 @@ python build.py
 
 ---
 
-## GitHub Pages Deployment
-
-This repository is configured to serve `index.html` directly from the `main` branch root:
-
-1. Navigate to **Settings > Pages** in the GitHub repository.
-2. Under **Build and deployment**, set the source to **Deploy from a branch**.
-3. Select the **`main`** branch and **`/ (root)`** folder, then click **Save**.
-4. Access the live site at `[https://charmanderthegreat.github.io/KALIWA-ANIMATION/](https://charmanderthegreat.github.io/KALIWA-ANIMATION/)`.
-
----
-
 ## Author
 
-**Albert Lawrence B. Robiñol**
+**Albert Lawrence B. Robiñol** (BSIT 3-2)
 * GitHub: [@CharmanderTheGreat](https://github.com/CharmanderTheGreat)
