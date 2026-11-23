@@ -255,7 +255,7 @@
             line-height: 1.7;
         }
 
-        /* Cinema Theater Slot (keeps layout height stable when floating) */
+        /* Cinema Theater Slot */
         .theater-slot {
             position: relative;
             width: 100%;
@@ -283,7 +283,7 @@
             opacity: 1;
         }
 
-        /* Actual Video Box (Docked vs Clean Floating PiP) */
+        /* Actual Video Box */
         .video-box {
             position: absolute;
             inset: 0;
@@ -603,10 +603,8 @@
                     <div class="video-inner" oncontextmenu="return false;">
                         <iframe
                             id="film-player"
-                            src="[https://drive.google.com/file/d/10W5VgzMY5EHTlf-im6mVVje_aIWLFX4W/preview](https://drive.google.com/file/d/10W5VgzMY5EHTlf-im6mVVje_aIWLFX4W/preview)"
                             allow="autoplay; fullscreen"
                             allowfullscreen
-                            loading="lazy"
                             title="KALIWA 1080p Animated Short">
                         </iframe>
                     </div>
@@ -621,7 +619,7 @@
                 </div>
                 <div class="screening-actions">
                     <button class="btn-outline" onclick="replayIntro()">Replay Intro</button>
-                    <a class="btn-outline" href="[https://github.com/CharmanderTheGreat/KALIWA-ANIMATION](https://github.com/CharmanderTheGreat/KALIWA-ANIMATION)" target="_blank" rel="noopener">View Repository</a>
+                    <button class="btn-outline" onclick="openRepo()">View Repository</button>
                 </div>
             </div>
         </section>
@@ -800,6 +798,13 @@
     </footer>
 
     <script>
+        const DRIVE_FILE_ID = "10W5VgzMY5EHTlf-im6mVVje_aIWLFX4W";
+        const VIDEO_EMBED_URL = "https://" + "[drive.google.com/file/d/](https://drive.google.com/file/d/)" + DRIVE_FILE_ID + "/preview";
+        const REPO_URL = "https://" + "[github.com/CharmanderTheGreat/KALIWA-ANIMATION](https://github.com/CharmanderTheGreat/KALIWA-ANIMATION)";
+
+        const filmPlayer = document.getElementById('film-player');
+        filmPlayer.src = VIDEO_EMBED_URL;
+
         const overlay = document.getElementById('intro-overlay');
         const theaterSlot = document.getElementById('theater-slot');
         const videoBox = document.getElementById('video-box');
@@ -810,6 +815,10 @@
 
         function replayIntro() {
             overlay.classList.remove('hidden');
+        }
+
+        function openRepo() {
+            window.open(REPO_URL, '_blank', 'noopener,noreferrer');
         }
 
         function handleFloatingVideo() {
