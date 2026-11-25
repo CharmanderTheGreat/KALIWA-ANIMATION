@@ -295,32 +295,23 @@
             z-index: 50;
         }
 
-        .video-box.floating {
-            position: fixed;
-            inset: auto;
-            bottom: 24px;
-            right: 24px;
-            width: 380px;
-            max-width: calc(100vw - 32px);
-            aspect-ratio: 16 / 9;
-            padding: 4px;
-            border-radius: 12px;
-            border: 1px solid var(--border-accent);
-            box-shadow:
-                0 20px 50px rgba(0, 0, 0, 0.9),
-                0 0 30px rgba(56, 189, 248, 0.2);
-            z-index: 900;
-            animation: popInFloat 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-
-        @keyframes popInFloat {
-            from {
-                opacity: 0.6;
-                transform: translateY(18px) scale(0.95);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0) scale(1);
+        /* Desktop-only Floating Mini-Player */
+        @media (min-width: 769px) {
+            .video-box.floating {
+                position: fixed;
+                inset: auto;
+                bottom: 24px;
+                right: 24px;
+                width: 380px;
+                max-width: calc(100vw - 32px);
+                aspect-ratio: 16 / 9;
+                padding: 4px;
+                border-radius: 12px;
+                border: 1px solid var(--border-accent);
+                box-shadow:
+                    0 20px 50px rgba(0, 0, 0, 0.9),
+                    0 0 30px rgba(56, 189, 248, 0.2);
+                z-index: 900;
             }
         }
 
@@ -367,11 +358,6 @@
             box-shadow: 0 0 20px rgba(56, 189, 248, 0.2);
         }
 
-        .video-box.floating .loader-ring {
-            width: 28px;
-            height: 28px;
-        }
-
         .loader-text {
             font-size: 0.76rem;
             font-weight: 600;
@@ -379,11 +365,6 @@
             text-transform: uppercase;
             color: var(--text-secondary);
             animation: pulseText 1.6s ease-in-out infinite;
-        }
-
-        .video-box.floating .loader-text {
-            font-size: 0.62rem;
-            letter-spacing: 0.14em;
         }
 
         @keyframes spinLoader {
@@ -395,11 +376,13 @@
             50% { opacity: 1; }
         }
 
+        /* YouTube API Player Container & Iframe */
+        #yt-player-host,
         .video-inner iframe {
             position: relative;
             z-index: 2;
-            width: 100%;
-            height: 100%;
+            width: 100% !important;
+            height: 100% !important;
             border: 0;
             display: block;
         }
@@ -591,7 +574,7 @@
         /* Footer */
         footer {
             border-top: 1px solid var(--border-subtle);
-            padding: 2rem 1.5rem 7.5rem;
+            padding: 2rem 1.5rem 6rem;
             text-align: center;
             color: var(--text-muted);
             font-size: 0.8rem;
@@ -622,6 +605,9 @@
             .screening-actions .btn-outline {
                 flex: 1;
             }
+            footer {
+                padding-bottom: 2.5rem;
+            }
         }
 
         @media (max-width: 640px) {
@@ -649,18 +635,9 @@
                 padding: 4px;
                 border-radius: 12px;
             }
-            .video-box.floating {
-                width: 220px;
-                bottom: 14px;
-                right: 14px;
-                padding: 3px;
-            }
             .overview-grid,
             .principles-grid {
                 grid-template-columns: 1fr;
-            }
-            footer {
-                padding-bottom: 9.5rem;
             }
         }
     </style>
@@ -705,7 +682,7 @@
                 </p>
             </div>
 
-            <!-- Theater Slot with Loading Indicator & Floating PiP Support -->
+            <!-- Theater Slot with Loading Indicator & Desktop Floating PiP -->
             <div class="theater-slot" id="theater-slot">
                 <span class="slot-placeholder-text">Playing in Mini-Player Mode &bull; Scroll up to dock</span>
                 <div class="video-box" id="video-box">
@@ -714,12 +691,7 @@
                             <div class="loader-ring"></div>
                             <div class="loader-text">Loading 1080p Stream...</div>
                         </div>
-                        <iframe
-                            id="film-player"
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen"
-                            allowfullscreen
-                            title="KALIWA 1080p Animated Short">
-                        </iframe>
+                        <div id="yt-player-host"></div>
                     </div>
                 </div>
             </div>
@@ -911,32 +883,56 @@
     </footer>
 
     <script>
+        const YT_VIDEO_ID = 'J6DJsprJuXE';
+        let ytPlayerInstance = null;
+
+        function hideStreamLoader() {
+            const loader = document.getElementById('stream-loader');
+            if (loader) {
+                loader.classList.add('loaded');
+            }
+        }
+
+        function onYouTubeIframeAPIReady() {
+            ytPlayerInstance = new YT.Player('yt-player-host', {
+                videoId: YT_VIDEO_ID,
+                width: '100%',
+                height: '100%',
+                playerVars: {
+                    rel: 0,
+                    modestbranding: 1,
+                    playsinline: 1,
+                    fs: 1
+                },
+                events: {
+                    onReady: function (event) {
+                        hideStreamLoader();
+                        if (typeof event.target.setPlaybackQuality === 'function') {
+                            event.target.setPlaybackQuality('hd1080');
+                        }
+                    },
+                    onStateChange: function (event) {
+                        if (event.data === YT.PlayerState.PLAYING && typeof event.target.setPlaybackQuality === 'function') {
+                            event.target.setPlaybackQuality('hd1080');
+                        }
+                    }
+                }
+            });
+        }
+
         document.addEventListener('DOMContentLoaded', function () {
             const proto = window.location.protocol === 'http:' ? 'http:' : 'https:';
             const slashes = String.fromCharCode(47, 47);
 
             const ytHost = ['www', 'youtube', 'com'].join('.');
-            const ytVideoId = 'J6DJsprJuXE';
-            const videoUrl = proto + slashes + ytHost + '/embed/' + ytVideoId + '?rel=0&modestbranding=1&vq=hd1080';
+            const apiScript = document.createElement('script');
+            apiScript.src = proto + slashes + ytHost + '/iframe_api';
+            document.head.appendChild(apiScript);
+
+            setTimeout(hideStreamLoader, 4000);
 
             const ghHost = ['github', 'com'].join('.');
             const repoUrl = proto + slashes + ghHost + '/CharmanderTheGreat/KALIWA-ANIMATION';
-
-            const filmPlayer = document.getElementById('film-player');
-            const streamLoader = document.getElementById('stream-loader');
-
-            function hideStreamLoader() {
-                if (streamLoader) {
-                    streamLoader.classList.add('loaded');
-                }
-            }
-
-            if (filmPlayer) {
-                filmPlayer.addEventListener('load', hideStreamLoader);
-                filmPlayer.src = videoUrl;
-                setTimeout(hideStreamLoader, 3500);
-            }
-
             const btnRepo = document.getElementById('btn-repo');
             if (btnRepo) {
                 btnRepo.href = repoUrl;
@@ -960,8 +956,24 @@
                 });
             }
 
+            function isFullscreenActive() {
+                return !!(
+                    document.fullscreenElement ||
+                    document.webkitFullscreenElement ||
+                    document.mozFullScreenElement ||
+                    document.msFullscreenElement
+                );
+            }
+
             function handleFloatingVideo() {
                 if (!theaterSlot || !videoBox) return;
+
+                if (window.innerWidth <= 768 || isFullscreenActive()) {
+                    videoBox.classList.remove('floating');
+                    theaterSlot.classList.remove('is-docked-out');
+                    return;
+                }
+
                 const slotRect = theaterSlot.getBoundingClientRect();
                 const isAtTop = window.scrollY <= 80;
 
@@ -974,6 +986,8 @@
                 }
             }
 
+            document.addEventListener('fullscreenchange', handleFloatingVideo);
+            document.addEventListener('webkitfullscreenchange', handleFloatingVideo);
             window.addEventListener('scroll', handleFloatingVideo, { passive: true });
             window.addEventListener('resize', handleFloatingVideo);
         });
